@@ -1,4 +1,4 @@
-import { Stack, useRouter, useSearchParams } from "expo-router";
+import { Stack, useRouter, useLocalSearchParams  } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   View,
@@ -23,7 +23,7 @@ import useFetch from "../../hook/useFetch";
 const tabs = ["About", "Qualifications", "Responsibilities"];
 
 const JobDetails = () => {
-  const params = useSearchParams();
+  const params = useLocalSearchParams();
   const router = useRouter();
 
   const { data, isLoading, error, refetch } = useFetch("job-details", {
@@ -120,7 +120,7 @@ const JobDetails = () => {
           )}
         </ScrollView>
 
-        <JobFooter url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results/'} />
+        <JobFooter url={data[0]?.job_apply_link ?? 'https://careers.google.com/jobs/results/'} />
       </>
     </SafeAreaView>
   );
